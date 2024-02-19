@@ -23,7 +23,8 @@ const [data, setData] = useState()
     });
     if (res.ok) {
       const resp = await res.json()
-      const concatenatedString = resp.join(' ');
+      console.log(resp)
+      const concatenatedString = resp.result.join(' ');
       setData(concatenatedString)
     }
     

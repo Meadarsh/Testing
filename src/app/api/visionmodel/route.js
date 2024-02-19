@@ -10,14 +10,14 @@ export async function POST(req) {
   const data = await req.formData();
   const file = data.get("file");
   const prompt= data.get("prompt");
-
+  let imageavilable=false;
   let result;
  try {
     if (file && file.name) {
       if (!file.type.includes("image")) {
         return NextResponse.json({message:"Select image"});
       }
-
+      imageavilable = true;
       result = await replicate.run(
         "yorickvp/llava-13b:e272157381e2a3bf12df3a8edd1f38d1dbd736bbb7437277c8b34175f8fce358",
         {
@@ -32,7 +32,7 @@ export async function POST(req) {
       );
     } else {
       result = await replicate.run(
-        "lucataco/llama-2-7b-chat:6ab580ab4eef2c2b440f2441ec0fc0ace5470edaf2cbea50b8550aec0b3fbd38",
+        "01-ai/yi-6b-chat:14efadfaf772f45ee74c14973007cbafab3ccac90169ec96a9fc7a804253535d",
         {
           input: {
             top_p: 0.95,
@@ -45,7 +45,7 @@ export async function POST(req) {
         }
       );
     }
-    return NextResponse.json(result);
+    return NextResponse.json({result,imageavilable});
   } 
   catch (error) {
     return NextResponse.json({ error: "Internal Server Error", details: error.message || error });
