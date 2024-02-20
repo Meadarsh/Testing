@@ -60,7 +60,7 @@ const [generating, setGenerating] = useState(false)
   </div>
 
     </div>
-    <div className="flex justify-between items-center  w-[80%] border-2 border-red-400 p-1 rounded-2xl">
+    <div className="flex justify-between items-center  w-[80%] border-2 border-white p-1 rounded-2xl">
    <div className="h-12 w-[calc(100%-200px)]"> <input placeholder="Enter your prompt"  type="text" className=" pl-2 bg-transparent text-white focus:outline-none h-full w-full" onChange={e => setText(e.target.value)} /></div>
    <div className="h-12  relative overflow-hidden rounded-full w-12"> <input className="h-full opacity-0 w-full" type="file" onChange={e => setFile(e.target?.files[0])} /><MdOutlineUploadFile className={`absolute top-3 left-2  ${file?'text-red-500':'text-white'}  pointer-events-none`} size={30}/></div>
   <div onClick={Generate} > <Button /></div>
