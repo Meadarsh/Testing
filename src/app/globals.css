@@ -1,3 +1,55 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+ body{
+  background-color: black;
+ }
+
+button {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 0.5em 1em 0.5em 0.6em;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(to right, #4b1434, #803232, #532d46);
+    border: none;
+    letter-spacing: 0.05em;
+    border-radius: 16px;
+    margin-right: 2px;
+  }
+  
+  button svg {
+    margin-right: 3px;
+    transform: rotate(30deg);
+    transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  
+  button span {
+    transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  
+  button:hover svg {
+    transform: translateX(5px) rotate(90deg);
+  }
+  
+  button:hover span {
+    transform: translateX(7px);
+  }
+
+  .main{
+    background: url(/bg.png) no-repeat center center;
+    height: 100vh;
+    background-size: cover;
+    filter: blur(8px);
+  -webkit-filter: blur(8px);
+  filter: brightness(60%);
+  }
+  .hero{
+  background-color: rgba(255, 255, 255, 0.096);
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  }

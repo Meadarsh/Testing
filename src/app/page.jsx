@@ -3,6 +3,7 @@ import { useState } from "react"
 import { MdOutlineUploadFile } from "react-icons/md";
 import { TypeAnimation } from "react-type-animation";
 import Loader from "./components/loader";
+import Button from "./components/button";
 export default function Home() {
   
 const [file, setFile] = useState()
@@ -39,10 +40,10 @@ const [generating, setGenerating] = useState(false)
 }
   return (
     <>
-    <div className="flex flex-col items-center">
-    <div className="h-[85vh] w-[100vw] relative px-8">
-
-  <div className="textarea absolute w-[90%] bottom-5 overflow-clip">
+    <div className="main"> </div>
+    <div className="hero flex w-[calc(100vw-20px)] h-[calc(100vh-20px)] rounded-xl flex-col absolute left-[10px] top-[10px] items-center">
+    <div className=" h-[85vh] w-[80vw] relative px-8">
+  <div className="textarea absolute w-[90%]  bottom-5 overflow-clip">
   {loading&&<div><Loader/></div>}
  {data&&<TypeAnimation
       sequence={[
@@ -54,17 +55,15 @@ const [generating, setGenerating] = useState(false)
       wrapper="p"
       cursor={true}
       speed={50}
-      style={{ fontSize: '1.1em', display: 'inline-block' }}
+      style={{ fontSize: '1.1em',color:"white", display: 'inline-block' }}
     />}
   </div>
 
     </div>
-    <div className="flex justify-between items-center w-[80%] border-2 border-blue-400 p-1 rounded-2xl">
-   <div className="h-12 w-[calc(100%-200px)]"> <input placeholder="Enter your prompt"  type="text" className=" pl-2 bg-transparent  focus:outline-none h-full w-full" onChange={e => setText(e.target.value)} /></div>
-   <div className="h-12  relative overflow-hidden rounded-full w-12"> <input className="h-full opacity-0 w-full" type="file" onChange={e => setFile(e.target?.files[0])} /><MdOutlineUploadFile className={`absolute top-3 left-2  ${file?'text-blue-500':'text-black'}  pointer-events-none`} size={30}/></div>
-    <button className="h-12 w-36 font-semibold text-white rounded-2xl bg-blue-500" onClick={Generate}>
-      Generate
-    </button>
+    <div className="flex justify-between items-center  w-[80%] border-2 border-red-400 p-1 rounded-2xl">
+   <div className="h-12 w-[calc(100%-200px)]"> <input placeholder="Enter your prompt"  type="text" className=" pl-2 bg-transparent text-white focus:outline-none h-full w-full" onChange={e => setText(e.target.value)} /></div>
+   <div className="h-12  relative overflow-hidden rounded-full w-12"> <input className="h-full opacity-0 w-full" type="file" onChange={e => setFile(e.target?.files[0])} /><MdOutlineUploadFile className={`absolute top-3 left-2  ${file?'text-red-500':'text-white'}  pointer-events-none`} size={30}/></div>
+  <div onClick={Generate} > <Button /></div>
     </div>
     </div>
    
