@@ -9,13 +9,13 @@ const replicate = new Replicate({
 export async function POST(req) {
   const data = await req.formData();
   const file = data.get("file");
-  const prompt= data.get("prompt");
-  let imageavilable=false;
+  const prompt = data.get("prompt");
+  let imageavilable = false;
   let result;
- try {
+  try {
     if (file && file.name) {
       if (!file.type.includes("image")) {
-        return NextResponse.json({message:"Select image"});
+        return NextResponse.json({ message: "Select image" });
       }
       imageavilable = true;
       result = await replicate.run(
@@ -32,24 +32,26 @@ export async function POST(req) {
       );
     } else {
       result = await replicate.run(
-         "01-ai/yi-34b-chat:914692bbe8a8e2b91a4e44203e70d170c9c5ccc1359b283c84b0ec8d47819a46",
+        "01-ai/yi-34b-chat:914692bbe8a8e2b91a4e44203e70d170c9c5ccc1359b283c84b0ec8d47819a46",
         {
           input: {
-             top_k: 50,
-  top_p: 1,
-  prompt:prompt,
-  temperature: 0.75,
-      prompt_template: "<|im_start|>system\nYou are a helpful assistant<|im_end|>\n<|im_start|>user\n{prompt}<|im_end|>\n<|im_start|>assistant\n",
-  max_new_tokens: 800,
-  min_new_tokens: -1,
-                  repetition_penalty: 1.2
-
-};
+            top_k: 50,
+            top_p: 1,
+            prompt: prompt,
+            temperature: 0.75,
+            prompt_template:"<|im_start|>system\nYou are a helpful assistant<|im_end|>\n<|im_start|>user\n{prompt}<|im_end|>\n<|im_start|>assistant\n",
+            max_new_tokens: 800,
+            min_new_tokens: -1,
+            repetition_penalty: 1.2,
+          },
         }
       );
     }
-    return NextResponse.json({result,imageavilable});
-  } 
-  catch (error) {
-    return NextResponse.json({ error: "Internal Server Error", details: error.message || error });
-  }}
+    return NextResponse.json({ result, imageavilable });
+  } catch (error) {
+    return NextResponse.json({
+      error: "Internal Server Error",
+      details: error.message || error,
+    });
+  }
+}
