@@ -32,16 +32,19 @@ export async function POST(req) {
       );
     } else {
       result = await replicate.run(
-        "01-ai/yi-6b-chat:14efadfaf772f45ee74c14973007cbafab3ccac90169ec96a9fc7a804253535d",
+        "meta/llama-2-7b-chat",
         {
           input: {
-            top_p: 0.95,
-            prompt:prompt,
-            temperature: 0.75,
-            system_prompt: "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe.  Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.",
-            max_new_tokens: 225,
-            repetition_penalty: 1.1
-          }
+  debug: false,
+  top_k: -1,
+  top_p: 1,
+  prompt:prompt,
+  temperature: 0.75,
+  system_prompt: "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\n\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.",
+  max_new_tokens: 800,
+  min_new_tokens: -1,
+  repetition_penalty: 1
+};
         }
       );
     }
