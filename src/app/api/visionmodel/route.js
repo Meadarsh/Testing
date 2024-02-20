@@ -32,7 +32,7 @@ export async function POST(req) {
       );
     } else {
       result = await replicate.run(
-        "01-ai/yi-34b-chat:914692bbe8a8e2b91a4e44203e70d170c9c5ccc1359b283c84b0ec8d47819a46",
+  "01-ai/yi-6b-chat:14efadfaf772f45ee74c14973007cbafab3ccac90169ec96a9fc7a804253535d",
         {
           input: {
             top_k: 50,
