@@ -32,18 +32,10 @@ export async function POST(req) {
       );
     } else {
       result = await replicate.run(
-  "01-ai/yi-6b-chat:14efadfaf772f45ee74c14973007cbafab3ccac90169ec96a9fc7a804253535d",
-        {
-          input: {
-            top_k: 50,
-            top_p: 1,
-            prompt: prompt,
-            temperature: 0.75,
-            prompt_template:"<|im_start|>system\nYou are a helpful assistant<|im_end|>\n<|im_start|>user\n{prompt}<|im_end|>\n<|im_start|>assistant\n",
-            max_new_tokens: 800,
-            min_new_tokens: -1,
-            repetition_penalty: 1.2,
-          },
+        "meta/llama-2-70b-chat:02e509c789964a7ea8736978a43525956ef40397be9033abf9fd2badfe68c9e3",
+        input={
+          "prompt": prompt,
+          "max_new_tokens": 250
         }
       );
     }
