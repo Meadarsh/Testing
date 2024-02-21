@@ -2,7 +2,7 @@ import React from 'react'
 
 const Button = () => {
   return (
-    <button>
+    <button className='lg:w-32 w-10 h-10'>
     <svg
       height="24"
       width="24"
@@ -15,7 +15,7 @@ const Button = () => {
         fill="currentColor"
       ></path>
     </svg>
-    <span>Generate</span>
+    <span className='lg:block hidden'>Generate</span>
   </button>
   
   )

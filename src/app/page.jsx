@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <>
       <div className="main"> </div>
-      <div className="hero flex w-[calc(100vw-20px)] h-[calc(100vh-20px)] rounded-xl flex-col absolute left-[10px] top-[10px] items-center">
+      <div className="hero flex lg:w-[calc(100vw-20px)] w-[calc(100vw-10px)] lg:h-[calc(100vh-20px)] h-[calc(100vh-10px)]  rounded-xl flex-col absolute lg:left-[10px] left-[5px] top-[5px] lg:top-[10px] items-center">
         <div className=" h-[85vh] w-[80vw] relative px-8">
           <div className="textarea absolute w-[90%]  bottom-5 overflow-clip">
             {loading && (
@@ -67,8 +67,8 @@ export default function Home() {
             )}
           </div>
         </div>
-        <div className="flex justify-between items-center  w-[80%] border-2 border-white p-1 rounded-2xl">
-          <div className="h-12 w-[calc(100%-200px)]">
+        <div className="flex justify-between items-center w-[95%] lg:w-[80%] border border-white p-1 rounded-2xl">
+          <div className="h-12 lg:w-[calc(100%-200px)] w-[calc(100%-60px)]">
             {" "}
             <input
               placeholder="Enter your prompt"
@@ -92,7 +92,6 @@ export default function Home() {
             />
           </div>
           <div onClick={Generate}>
-            {" "}
             <Button />
           </div>
         </div>

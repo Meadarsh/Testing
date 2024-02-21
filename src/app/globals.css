@@ -8,11 +8,11 @@
 button {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-family: inherit;
     cursor: pointer;
     font-weight: 500;
     font-size: 17px;
-    padding: 0.5em 1em 0.5em 0.6em;
     color: white;
     background: #ad5389;
     background: linear-gradient(to right, #4b1434, #803232, #532d46);
